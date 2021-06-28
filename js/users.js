@@ -30,6 +30,8 @@ let userInfo = [];
             <td>${userEmail}</td> <td><button type='button'>View</button></td>`;
 
             getEl('usersTable').innerHTML += populate;
+
+           
         }
     
     
@@ -37,14 +39,21 @@ let userInfo = [];
     }
         xhr.open('GET','https://jsonplaceholder.typicode.com/users' );
         xhr.send();
+
+
+
+
+
+        
         
     
 
 
 document.addEventListener('DOMContentLoaded', function(){
 
-
-
+    getEl('userView').addEventListener('click', function(event){
+        event.target = 
+    }
     
 });
 
