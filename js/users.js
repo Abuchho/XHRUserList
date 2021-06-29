@@ -66,8 +66,6 @@ let userInfo = [];
             
 
         });
-        xhr.open('GET','https://jsonplaceholder.typicode.com/users' );
-        xhr.send();
-
+      
 
 
