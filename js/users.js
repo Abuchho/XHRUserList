@@ -49,13 +49,13 @@ let userInfo = [];
                 console.log(event.target.id);
                 let getId = event.target.id-1;
 
-                let id = getId;
+                let id = getId+1;
                 let name = userInfo[getId].name;
                 let email = userInfo[getId].email;
                 
 
 
-                let sideView = `<p>ID: ${getId+1} <br> Name: ${name} <br> Email: ${email}</p>`
+                let sideView = `<p>ID: ${id} <br> Name: ${name} <br> Email: ${email}</p>`
                 getEl('userView').innerHTML = sideView;
 
             }
