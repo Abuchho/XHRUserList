@@ -26,10 +26,10 @@ let userInfo = [];
             let userName = userInfo[i].name;
             let userEmail = userInfo[i].email;
 
-            let populate = `<td>${userId}</td> <td>${userName}</td> 
-            <td>${userEmail}</td> <td><button type='button'>View</button></td>`;
+            let populate = `<tr><td>${userId}</td> <td>${userName}</td> 
+            <td>${userEmail}</td> <td><button id="${userId}" type='button'>View</button></td></tr>`;
 
-            getEl('usersTable').innerHTML += populate;
+            getEl('userList').innerHTML += populate;
 
            
         }
@@ -40,21 +40,34 @@ let userInfo = [];
         xhr.open('GET','https://jsonplaceholder.typicode.com/users' );
         xhr.send();
 
+   
 
 
+        getEl('userList').addEventListener('click', function(event){
+            
+            if(event.target.nodeName == 'BUTTON' ){
+                console.log(event.target.id);
+                let getId = event.target.id-1;
+
+                let id = getId;
+                let name = userInfo[getId].name;
+                let email = userInfo[getId].email;
+                
 
 
-        
-        
-    
+                let sideView = `<p>ID: ${getId+1} <br> Name: ${name} <br> Email: ${email}</p>`
+                getEl('userView').innerHTML = sideView;
 
+            }
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {      
+            };
 
-document.addEventListener('DOMContentLoaded', function(){
+            
 
-    getEl('userView').addEventListener('click', function(event){
-        event.target = 
-    }
-    
-});
+        });
+        xhr.open('GET','https://jsonplaceholder.typicode.com/users' );
+        xhr.send();
+
 
 
