@@ -1,20 +1,8 @@
-
-// On page load, pull the users endpoint from https://jsonplaceholder.typicode.com/users using XHR
-// Generate the table of users for #usersTable (include a button/link in the fourth column to let you view an individual record)
-// If a button/link in the table is clicked, populate #userView with the full details of the user.
-// (bonus points if you make it a nice form as if the user was editable)
-
-
-
-// Helpers
-
 function getEl(id){
     return document.getElementById(id);
 }
 
 let userInfo = [];
-
-
 
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
@@ -34,8 +22,6 @@ let userInfo = [];
            
         }
     
-    
-    
     }
         xhr.open('GET','https://jsonplaceholder.typicode.com/users' );
         xhr.send();
@@ -47,25 +33,26 @@ let userInfo = [];
             
             if(event.target.nodeName == 'BUTTON' ){
                 console.log(event.target.id);
-                let getId = event.target.id-1;
+                let getId = event.target.id;
 
-                let id = getId+1;
-                let name = userInfo[getId].name;
-                let email = userInfo[getId].email;
                 
 
-
-                let sideView = `<p>ID: ${id} <br> Name: ${name} <br> Email: ${email}</p>`
+               
+                let userxhr = new XMLHttpRequest();
+                    userxhr.onload = function () {    
+                    userInfo = JSON.parse(this.responseText);
+                    let sideView = `<p>ID: ${userInfo.id} <br> Name: ${userInfo.name} <br> Email: ${userInfo.email}</p>`
                 getEl('userView').innerHTML = sideView;
-
-            }
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function () {      
-            };
-
+  
+                };
+                userxhr.open('GET','https://jsonplaceholder.typicode.com/users/'+getId );
+                userxhr.send();
             
-
+            
+            }
+            
         });
+
       
 
 
